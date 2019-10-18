@@ -1,4 +1,5 @@
 ﻿using CadastroTurma.Model;
+using System;
 using System.Collections.Generic;
 
 namespace CadastroEscolar.Model
@@ -10,5 +11,6 @@ namespace CadastroEscolar.Model
         public List<Professor> Professores { get; set; }  = new List<Professor>();
 
         public List<Coordenador> Coordenadores { get; set; } = new List<Coordenador>();
+
     }
 }

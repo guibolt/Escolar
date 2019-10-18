@@ -1,4 +1,5 @@
-﻿using CadastroTurma.Model;
+﻿using CadastroTurma;
+using CadastroTurma.Model;
 using System;
 using System.Collections.Generic;
 
@@ -6,19 +7,19 @@ namespace CadastroEscolar.Model
 {
     public class Coordenador : Pessoa
     {
-        public int NumeroRegistro { get; set; }
+        public Coordenador() {}
         public List<int> CodTurmas { get; set; } = new List<int>();
 
-      
-        public Coordenador(string nome, int idade, char sexo, long cpf, int numeroRegistro, List<int> codturmas) : base(nome, idade, sexo, cpf)
-        {
-            NumeroRegistro = numeroRegistro;
-            CodTurmas = codturmas;
-        }
+        public override string ToString() => $"Nome: {Nome} Idade: {Idade} Sexo: {Sexo.ToString().ToUpper()} Matricula: {Matricula} Cpf: {Cpf} \n";
 
-        public override dynamic CadastrarPessoa()
+        public override void CadastrarPessoa(Escola escola)
         {
-            throw new NotImplementedException();
+            base.CadastrarPessoa(escola);
+
+            var numValida = Operacoes.ChecaId("coordenador", Matricula, escola);
+
+            if (numValida != 0)
+                Matricula = numValida;
         }
 
     }

@@ -1,0 +1,10 @@
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\bin\Debug\netcoreapp2.2\CadastroEscolar.deps.json
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\bin\Debug\netcoreapp2.2\CadastroEscolar.runtimeconfig.json
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\bin\Debug\netcoreapp2.2\CadastroEscolar.runtimeconfig.dev.json
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\bin\Debug\netcoreapp2.2\CadastroEscolar.dll
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\obj\Debug\netcoreapp2.2\CadastroEscolar.csprojAssemblyReference.cache
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfoInputs.cache
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfo.cs
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\bin\Debug\netcoreapp2.2\CadastroEscolar.pdb
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\obj\Debug\netcoreapp2.2\CadastroEscolar.dll
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\obj\Debug\netcoreapp2.2\CadastroEscolar.pdb

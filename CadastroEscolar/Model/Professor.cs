@@ -1,18 +1,24 @@
-﻿using System;
+﻿using CadastroEscolar.Model;
+using System;
 
 namespace CadastroTurma.Model
 {
     public class Professor : Pessoa
     {
-        public int Matricula { get; set; }
-
-        public Professor(string nome, int idade, char sexo, long cpf,int matricula) : base(nome, idade, sexo, cpf) =>  Matricula = matricula;
-
+        public Coordenador Coordenador { get; set; }
+        public int QuantidadeTurmas { get; set; }
+        public Professor() { }
         public override string ToString() => $"Nome: {Nome} Idade: {Idade} Sexo: {Sexo.ToString().ToUpper()} Matricula: {Matricula} Cpf: {Cpf} \n";
 
-        public override dynamic CadastrarPessoa()
+        public override void CadastrarPessoa(Escola escola)
         {
-            throw new NotImplementedException();
+            base.CadastrarPessoa(escola);
+
+            var numValida = Operacoes.ChecaId("professor", Matricula, escola);
+
+            if (numValida != 0)
+                Matricula = numValida;
         }
+            
     }
 }

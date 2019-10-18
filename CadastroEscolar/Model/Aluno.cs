@@ -1,21 +1,40 @@
-﻿namespace CadastroTurma.Model
+﻿using CadastroEscolar.Model;
+using System;
+
+namespace CadastroTurma.Model
 {
     public class Aluno : Pessoa
     {
-        public int Ra { get; set; }
+        public Aluno() {  }
         public bool Bolsista { get; set; }
 
-        public Aluno(string nome, int idade, char sexo, long cpf, int ra, bool bolsisa) : base(nome, idade, sexo, cpf)
-        {
-            Ra = ra;
-            Bolsista = bolsisa;
-        }
+        public override string ToString() => $"Nome: {Nome} Idade: {Idade} Sexo: {Sexo.ToString().ToUpper()} Ra: {Matricula} Cpf: {Cpf} É Bolsista: {Bolsista}\n";
 
-        public override string ToString() => $"Nome: {Nome} Idade: {Idade} Sexo: {Sexo.ToString().ToUpper()} Ra: {Ra} Cpf: {Cpf} É Bolsista: {Bolsista}\n";
-
-        public override dynamic CadastrarPessoa()
+        public  override void  CadastrarPessoa(Escola escola)
         {
-            throw new System.NotImplementedException();
+            base.CadastrarPessoa(escola);
+
+            var numValida = Operacoes.ChecaId("aluno", Matricula, escola);
+
+            if(numValida != 0)
+                Matricula = numValida;
+            
+
+            Console.WriteLine("Digite se o aluno é bolsista, sim ou não?");
+            string opcao = Console.ReadLine();
+            while (!Operacoes.ValidaOpcao(opcao))
+            {
+                Console.WriteLine("Opção inválida, digite novamente!");
+                opcao = Console.ReadLine();
+
+                if (opcao == "SIM")
+                    Bolsista = true;
+                else
+                    Bolsista = false;
+            }
+
+            Console.Clear();
+            Console.WriteLine($"{Nome} Cadastrado com sucesso! \n");
         }
 
     }
