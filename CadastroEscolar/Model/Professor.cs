@@ -18,6 +18,9 @@ namespace CadastroTurma.Model
 
             if (numValida != 0)
                 Matricula = numValida;
+
+            Console.Clear();
+            Console.WriteLine($"{Nome} Cadastrado com sucesso! Matricula n° {Matricula} \n");
         }
             
     }

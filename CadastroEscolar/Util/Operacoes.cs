@@ -10,6 +10,7 @@ namespace CadastroTurma
 {
     public static class Operacoes
     {
+        //Menu central da aplicacao, contendo as opcoes para os outros menus
         public static void MenuCentral(Escola escola)
         {
             Console.Clear();
@@ -92,7 +93,6 @@ namespace CadastroTurma
                     case "5":
                         Console.WriteLine("Enter para voltar ao menu principal");
                         Console.ReadLine();
-                        
                         MenuCentral(Escola);
                         break;
 
@@ -157,7 +157,8 @@ namespace CadastroTurma
 
             Console.WriteLine("Alunos Disponiveis!:\n");
             escola.Alunos.ForEach(e => Console.WriteLine(e));
-
+            
+            // Relização das validaçoes com while para prender o usuario ate ele escrever corretamente 
             Aluno oAluno = null;
 
             while (oAluno == null)
@@ -189,7 +190,8 @@ namespace CadastroTurma
 
             if (aTurma.Alunos.Count() == aTurma.Alunos.Capacity)
             {
-                // Chama o outro menus
+                Console.WriteLine("A Turma já está cheia, nao é possivel inserir mais alunos!" );
+                MenuCentral(escola);
             }
 
             aTurma.Alunos.Add(oAluno);
@@ -201,9 +203,9 @@ namespace CadastroTurma
         public static void AtribuiProfessorTurma(Escola escola)
         {
             Console.Clear();
-
             int matriculaProfessor, codTurma;
 
+            // Relização das validaçoes com while para prender o usuario ate ele escrever corretamente 
             Professor oProfessor = null;
 
             while (oProfessor == null)
@@ -213,6 +215,12 @@ namespace CadastroTurma
                     Console.WriteLine("matricula inválida, digite novamente!\n");
 
                 oProfessor = escola.Professores.FirstOrDefault(c => c.Matricula == matriculaProfessor);
+            }
+
+            if(oProfessor.QuantidadeTurmas == 2)
+            {
+                Console.WriteLine("Este professor ja está em duas turmas, não é possivel inscreve-lo em uma terceira!");
+                MenuCentral(escola);
             }
 
             Turma aTurma = null;
@@ -259,6 +267,7 @@ namespace CadastroTurma
                     Console.WriteLine("Turmas disponiveis");
                     escola.Turmas.ForEach(c => Console.WriteLine(c));
 
+                    // Relização das validaçoes com while para prender o usuario ate ele escrever corretamente 
                     Coordenador oCoordenador = null;
 
                     while (oCoordenador == null)
@@ -281,6 +290,7 @@ namespace CadastroTurma
                         aTurma = escola.Turmas.FirstOrDefault(c => c.CodigoTurma == codTurma);
                     }
 
+                    oCoordenador.CodTurmas.Add(aTurma.CodigoTurma);
                     aTurma.Coordenador = oCoordenador;
 
                     Arquivo.Salvar(escola);
@@ -321,7 +331,9 @@ namespace CadastroTurma
                     if (oProfessor.Coordenador != null)
                         escola.Coordenadores.Add(oProfessor.Coordenador);
 
+                 
                     oProfessor.Coordenador = Coordenador;
+                   
                     Arquivo.Salvar(escola);
                     break;
 
@@ -342,7 +354,7 @@ namespace CadastroTurma
             escola.Turmas.ForEach(e => Console.WriteLine(e));
 
             Console.WriteLine("Escolha a turma pelo ID!");
-
+            // Relização das validaçoes com while para prender o usuario ate ele escrever corretamente 
             Turma aTurma = null;
 
             while (aTurma == null)
@@ -430,6 +442,7 @@ namespace CadastroTurma
             return true;
         }
 
+        
         public static bool ValidaOpcao(string opcao)
         {
             if (opcao.ToUpper() == "SIM" || opcao.ToUpper() == "NÃO" || opcao.ToUpper() == "NAO")
@@ -438,42 +451,29 @@ namespace CadastroTurma
             return false;
         }
 
+        //Método para prevenir a repetição do random
         public static int ChecaId(string tipo, int Matricula, Escola escola)
         {
             switch (tipo.ToUpper())
             {
                 case "PROFESSOR":
-                    if(escola != null)
-                    {
                         while (escola.Professores.Any(c => c.Matricula == Matricula))
                             return new Random().Next(0000, 9999);
-                    }
-                 
                     break;
 
                 case "COORDENADOR":
-                    if (escola != null)
-                    {
                         while (escola.Coordenadores.Any(c => c.Matricula == Matricula))
                             return new Random().Next(0000, 9999);
-                    }
                     break;
 
                 case "ALUNO":
-                    if (escola != null)
-                    {
-                        while (escola.Alunos.Any(c => c.Matricula == Matricula))
-                            return new Random().Next(0000, 9999);
-                    }
-                      
+                    while (escola.Alunos.Any(c => c.Matricula == Matricula))
+                        return new Random().Next(0000, 9999);
                     break;
 
                 case "TURMA":
-                    if (escola != null)
-                    {
                         while (escola.Turmas.Any(c => c.CodigoTurma == Matricula))
-                            return new Random().Next(0000, 9999);
-                    }
+                           return new Random().Next(0000, 9999);
                     break;
 
                 default:

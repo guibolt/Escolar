@@ -34,7 +34,7 @@ namespace CadastroTurma.Model
             }
 
             Console.Clear();
-            Console.WriteLine($"{Nome} Cadastrado com sucesso! \n");
+            Console.WriteLine($"{Nome} Cadastrado com sucesso! Matricula n° {Matricula} \n");
         }
 
     }

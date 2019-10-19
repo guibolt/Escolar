@@ -11,6 +11,7 @@ namespace CadastroTurma.Model
         public long Cpf { get; set; }
         public int Matricula { get; set; } = new Random().Next(0000, 9999);
 
+        //Método virtual base para a realização do cadastro.
         public virtual void CadastrarPessoa(Escola escola)
         {
             int idadePessoa;
