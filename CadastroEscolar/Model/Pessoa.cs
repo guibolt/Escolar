@@ -18,7 +18,7 @@ namespace CadastroTurma.Model
             char sexo;
             long cpf;
 
-            Console.WriteLine($"Digite o nome  ou digite V para voltar o menu principal! \n");
+            Console.WriteLine($"Digite o nome  ou digite 1 para voltar o menu principal! \n");
             Nome = Console.ReadLine();
 
             Operacoes.VoltarAoMenu(Nome, escola);

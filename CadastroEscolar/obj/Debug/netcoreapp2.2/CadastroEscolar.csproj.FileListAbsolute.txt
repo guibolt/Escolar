@@ -14,7 +14,6 @@ C:\Users\guibo\Desktop\Requesitos\CadastroEscolar\bin\Debug\netcoreapp2.2\Cadast
 C:\Users\guibo\Desktop\Requesitos\CadastroEscolar\bin\Debug\netcoreapp2.2\CadastroEscolar.dll
 C:\Users\guibo\Desktop\Requesitos\CadastroEscolar\bin\Debug\netcoreapp2.2\CadastroEscolar.pdb
 C:\Users\guibo\Desktop\Requesitos\CadastroEscolar\obj\Debug\netcoreapp2.2\CadastroEscolar.csprojAssemblyReference.cache
-C:\Users\guibo\Desktop\Requesitos\CadastroEscolar\obj\Debug\netcoreapp2.2\CadastroEscolar.csproj.CoreCompileInputs.cache
 C:\Users\guibo\Desktop\Requesitos\CadastroEscolar\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfoInputs.cache
 C:\Users\guibo\Desktop\Requesitos\CadastroEscolar\obj\Debug\netcoreapp2.2\CadastroEscolar.AssemblyInfo.cs
 C:\Users\guibo\Desktop\Requesitos\CadastroEscolar\obj\Debug\netcoreapp2.2\CadastroEscolar.dll

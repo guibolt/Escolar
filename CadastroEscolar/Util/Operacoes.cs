@@ -13,10 +13,10 @@ namespace CadastroTurma
         //Menu central da aplicacao, contendo as opcoes para os outros menus
         public static void MenuCentral(Escola escola)
         {
-            Console.Clear();
             while (true)
             {
-                Console.WriteLine("\nDigite 1 para menu  de cadastro de Pessoas, 2 para menu de exibiçao, 3 para atribuir aluno a turma \n  e 4 para atribuir professor, e 5 para atrubir coodenador!  e 6 para sair! \n");
+                Console.Clear();
+                Console.WriteLine("\nDigite 1 para menu  de cadastros, 2 para menu de exibiçao, 3 para atribuir aluno a turma \n  e 4 para atribuir professor, e 5 para atrubir coodenador!  e 6 para sair! \n");
                 string Decisao = Console.ReadLine();
 
                 switch (Decisao)
@@ -105,38 +105,69 @@ namespace CadastroTurma
 
         public static void MenuDeExibicao(Escola Escola)
         {
-            Console.Clear();
             while (true)
             {
-                Console.WriteLine("\nDigite 1 para  a exbição de Alunos, 2 para professores, 3 para coordenador, 4 para turmas! 5 para voltar o menu principal! \n");
+                Console.Clear();
+                Console.WriteLine("\nDigite 1 para  a exbição de Alunos, 2 para professores, 3 para coordenador \n, 4 para turmas! 5 para ver turma por Id e 6 para voltar o menu principal! \n");
                 string Decisao = Console.ReadLine();
 
                 switch (Decisao)
                 {
                     case "1":
+
+                        Console.Clear();
                         Console.WriteLine("Alunos Disponiveis!:\n");
                         Escola.Alunos.ForEach(e => Console.WriteLine(e));
+                        Console.WriteLine("Enter para voltar ao menu de exibição");
+                        Console.ReadLine();
                         break;
 
                     case "2":
+                        Console.Clear();
                         Console.WriteLine("Professores Disponiveis:\n");
                         foreach (var professor in Escola.Professores)
                         {
                             if (professor.QuantidadeTurmas < 2)
                                 Console.WriteLine(professor);
                         }
+                        Console.WriteLine("Enter para voltar ao menu de exibição");
+                        Console.ReadLine();
                         break;
 
                     case "3":
+                        Console.Clear();
                         Console.WriteLine("Coordenadores:\n");
                         Escola.Coordenadores.ForEach(e => Console.WriteLine(e));
+                        Console.WriteLine("Enter para voltar ao menu de exibição");
+                        Console.ReadLine();
                         break;
                     case "4":
+                        Console.Clear();
                         Console.WriteLine("Turmas:\n");
                         Escola.Turmas.ForEach(e => Console.WriteLine(e));
+                        Console.WriteLine("Enter para voltar ao menu de exibição");
+                        Console.ReadLine();
                         break;
 
                     case "5":
+                        Console.Clear();
+                        var aTurma = RetornaTurmaPorId(Escola);
+                        Console.WriteLine(aTurma);
+                        Console.WriteLine("Alunos desta turma!!\n");
+                        aTurma.Alunos.ForEach(a => Console.WriteLine(a));
+                        Console.WriteLine("Enter para voltar ao menu de exibição");
+                        Console.ReadLine();
+                        break;
+                    case "6":
+                        Console.Clear();
+                        var oCoodenador = RetornaCoordenadorPorId(Escola);
+                        Console.WriteLine(oCoodenador);
+                        Console.WriteLine("Cod das turmas deste coordenador: \n");
+                        oCoodenador.CodTurmas.ForEach(a => Console.WriteLine(a));
+                        Console.WriteLine("Enter para voltar ao menu de exibição");
+                        Console.ReadLine();
+                        break;
+                    case "7":
                         Console.WriteLine("Enter para voltar ao menu principal");
                         Console.ReadLine();
                         MenuCentral(Escola);
@@ -157,30 +188,26 @@ namespace CadastroTurma
 
             Console.WriteLine("Alunos Disponiveis!:\n");
             escola.Alunos.ForEach(e => Console.WriteLine(e));
-            
+
             // Relização das validaçoes com while para prender o usuario ate ele escrever corretamente 
             Aluno oAluno = null;
 
             while (oAluno == null)
             {
-                Console.WriteLine("Coordenador inválido, digite novamente!\n");
-
-                Console.WriteLine("Digite a matricula do aluno!\n");
+                Console.WriteLine("Digite o numero da matricula do aluno");
                 while (!int.TryParse(Console.ReadLine(), out matriculaAluno))
                     Console.WriteLine("matricula inválida, digite novamente!\n");
 
                 oAluno = escola.Alunos.FirstOrDefault(c => c.Matricula == matriculaAluno);
             }
 
-            Console.WriteLine("Turmas disponiveis");
+            Console.WriteLine("Turmas disponiveis\n");
             escola.Turmas.ForEach(e => Console.WriteLine(e));
 
             Turma aTurma = null;
 
             while (aTurma == null)
             {
-                Console.WriteLine("Turma inválida, digite novamente!\n");
-
                 Console.WriteLine("Digite o Código da turma!\n");
                 while (!int.TryParse(Console.ReadLine(), out codTurma))
                     Console.WriteLine("matricula inválida, digite novamente!\n");
@@ -188,16 +215,20 @@ namespace CadastroTurma
                 aTurma = escola.Turmas.FirstOrDefault(c => c.CodigoTurma == codTurma);
             }
 
-            if (aTurma.Alunos.Count() == aTurma.Alunos.Capacity)
+            if (aTurma.Alunos.Count() == aTurma.CapacidadeMax)
             {
-                Console.WriteLine("A Turma já está cheia, nao é possivel inserir mais alunos!" );
+                Console.WriteLine("A Turma já está cheia, nao é possivel inserir mais alunos!\n");
+                Console.WriteLine("Aperte enter para voltar ao menu principal!");
+                Console.ReadLine();
                 MenuCentral(escola);
             }
 
             aTurma.Alunos.Add(oAluno);
             escola.Alunos.Remove(oAluno);
-
             Arquivo.Salvar(escola);
+            Console.WriteLine("Aluno atribuido com sucesso, enter para voltar ao menu principal!");
+            Console.ReadLine();
+
         }
 
         public static void AtribuiProfessorTurma(Escola escola)
@@ -217,9 +248,10 @@ namespace CadastroTurma
                 oProfessor = escola.Professores.FirstOrDefault(c => c.Matricula == matriculaProfessor);
             }
 
-            if(oProfessor.QuantidadeTurmas == 2)
+            if (oProfessor.QuantidadeTurmas == 2)
             {
                 Console.WriteLine("Este professor ja está em duas turmas, não é possivel inscreve-lo em uma terceira!");
+                Console.ReadLine();
                 MenuCentral(escola);
             }
 
@@ -227,7 +259,6 @@ namespace CadastroTurma
 
             while (aTurma == null)
             {
-                Console.WriteLine("Turma inválida, digite novamente!\n");
 
                 Console.WriteLine("Digite o Código da turma!\n");
                 while (!int.TryParse(Console.ReadLine(), out codTurma))
@@ -245,6 +276,7 @@ namespace CadastroTurma
             escola.Professores.Remove(oProfessor);
             oProfessor.QuantidadeTurmas++;
             aTurma.Professor = oProfessor;
+
 
             Arquivo.Salvar(escola);
         }
@@ -331,9 +363,9 @@ namespace CadastroTurma
                     if (oProfessor.Coordenador != null)
                         escola.Coordenadores.Add(oProfessor.Coordenador);
 
-                 
+
                     oProfessor.Coordenador = Coordenador;
-                   
+
                     Arquivo.Salvar(escola);
                     break;
 
@@ -341,6 +373,46 @@ namespace CadastroTurma
                     Console.WriteLine("Opção inválida!\n");
                     break;
             }
+        }
+
+        public static Turma RetornaTurmaPorId(Escola escola)
+        {
+            int codTurma;
+            Console.WriteLine("Turmas disponiveis");
+            escola.Turmas.ForEach(c => Console.WriteLine(c));
+
+            Turma aTurma = null;
+
+            while (aTurma == null)
+            {
+                Console.WriteLine("Digite o Código da turma!\n");
+                while (!int.TryParse(Console.ReadLine(), out codTurma))
+                    Console.WriteLine("matricula inválida, digite novamente!\n");
+
+                aTurma = escola.Turmas.FirstOrDefault(c => c.CodigoTurma == codTurma);
+            }
+
+            return aTurma;
+        }
+        public static Coordenador RetornaCoordenadorPorId(Escola escola)
+        {
+            int matriculaCoordenador;
+            Console.WriteLine("Coodenadores disponiveis");
+            escola.Coordenadores.ForEach(c => Console.WriteLine(c));
+
+            Coordenador Coordenador = null;
+
+            while (Coordenador == null)
+            {
+                Console.WriteLine("Digite a matricula do aluno!\n");
+                while (!int.TryParse(Console.ReadLine(), out matriculaCoordenador))
+                    Console.WriteLine("matricula inválida, digite novamente!\n");
+
+                Coordenador = escola.Coordenadores.FirstOrDefault(c => c.Matricula == matriculaCoordenador);
+            }
+
+
+            return Coordenador;
         }
 
 
@@ -442,7 +514,7 @@ namespace CadastroTurma
             return true;
         }
 
-        
+
         public static bool ValidaOpcao(string opcao)
         {
             if (opcao.ToUpper() == "SIM" || opcao.ToUpper() == "NÃO" || opcao.ToUpper() == "NAO")
@@ -457,13 +529,13 @@ namespace CadastroTurma
             switch (tipo.ToUpper())
             {
                 case "PROFESSOR":
-                        while (escola.Professores.Any(c => c.Matricula == Matricula))
-                            return new Random().Next(0000, 9999);
+                    while (escola.Professores.Any(c => c.Matricula == Matricula))
+                        return new Random().Next(0000, 9999);
                     break;
 
                 case "COORDENADOR":
-                        while (escola.Coordenadores.Any(c => c.Matricula == Matricula))
-                            return new Random().Next(0000, 9999);
+                    while (escola.Coordenadores.Any(c => c.Matricula == Matricula))
+                        return new Random().Next(0000, 9999);
                     break;
 
                 case "ALUNO":
@@ -472,8 +544,8 @@ namespace CadastroTurma
                     break;
 
                 case "TURMA":
-                        while (escola.Turmas.Any(c => c.CodigoTurma == Matricula))
-                           return new Random().Next(0000, 9999);
+                    while (escola.Turmas.Any(c => c.CodigoTurma == Matricula))
+                        return new Random().Next(0000, 9999);
                     break;
 
                 default:
@@ -483,11 +555,10 @@ namespace CadastroTurma
             return 0;
         }
 
-        public static void VoltarAoMenu(string voltar , Escola escola)
+        public static void VoltarAoMenu(string voltar, Escola escola)
         {
-            if (voltar.ToUpper().StartsWith("V"))
+            if (voltar.StartsWith("1"))
                 MenuCentral(escola);
         }
-
     }
 }

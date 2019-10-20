@@ -10,15 +10,7 @@ namespace CadastroEscolar.Model
         public Coordenador() {}
         public List<int> CodTurmas { get; set; } = new List<int>();
 
-        public override string ToString()
-        {
-            Console.WriteLine("Turmas deste coordenador \n");
-            CodTurmas.ForEach(c => Console.WriteLine($"Codigo: {c}\n"));
-
-           return $"Nome: {Nome} Idade: {Idade} Sexo: {Sexo.ToString().ToUpper()} Matricula: {Matricula} Cpf: {Cpf} \n";
-        }
-           
-
+        public override string ToString() => $"Nome: {Nome} Idade: {Idade} Sexo: {Sexo.ToString().ToUpper()} Matricula: {Matricula} Cpf: {Cpf} \n";
         public override void CadastrarPessoa(Escola escola)
         {
             base.CadastrarPessoa(escola);
@@ -31,6 +23,5 @@ namespace CadastroEscolar.Model
             Console.Clear();
             Console.WriteLine($"{Nome} Cadastrado com sucesso! Matricula n° {Matricula} \n");
         }
-
     }
 }

@@ -8,8 +8,8 @@ namespace CadastroEscolar
     {
         static void Main(string[] args)
         {
-            var nossaEscola = new Escola();
-            Arquivo.Recuperar();
+            var nossaEscola = Arquivo.Recuperar();
+            nossaEscola = nossaEscola ?? new Escola();
             Operacoes.MenuCentral(nossaEscola);
         }
     }
