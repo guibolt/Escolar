@@ -505,7 +505,7 @@ namespace CadastroTurma
         public static int ChecaId(string tipo, int Matricula, Escola escola)
         {
             switch (tipo.ToUpper())
-            {
+            { 
                 case "PROFESSOR":
                     while (escola.Professores.Any(c => c.Matricula == Matricula) || escola.Turmas.Any(c => c.Professor.Matricula == Matricula))
                         return new Random().Next(0000, 9999);
