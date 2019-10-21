@@ -277,7 +277,6 @@ namespace CadastroTurma
             oProfessor.QuantidadeTurmas++;
             aTurma.Professor = oProfessor;
 
-
             Arquivo.Salvar(escola);
         }
 
@@ -410,8 +409,6 @@ namespace CadastroTurma
 
                 Coordenador = escola.Coordenadores.FirstOrDefault(c => c.Matricula == matriculaCoordenador);
             }
-
-
             return Coordenador;
         }
 
@@ -448,8 +445,6 @@ namespace CadastroTurma
 
                     while (oAluno == null)
                     {
-                        Console.WriteLine("aluno inválido, digite novamente!\n");
-
                         Console.WriteLine("Digite a matricula do aluno!\n");
                         while (!int.TryParse(Console.ReadLine(), out matriculaPessoa))
                             Console.WriteLine("matricula inválida, digite novamente!\n");
@@ -466,9 +461,8 @@ namespace CadastroTurma
 
                     while (oProfessor == null)
                     {
-                        Console.WriteLine("aluno inválido, digite novamente!\n");
-
-                        Console.WriteLine("Digite a matricula do aluno!\n");
+                   
+                        Console.WriteLine("Digite a matricula do professor!\n");
                         while (!int.TryParse(Console.ReadLine(), out matriculaPessoa))
                             Console.WriteLine("matricula inválida, digite novamente!\n");
 
@@ -484,8 +478,6 @@ namespace CadastroTurma
 
                     while (Coordenador == null)
                     {
-                        Console.WriteLine("Coordenador inválido, digite novamente!\n");
-
                         Console.WriteLine("Digite a matricula do aluno!\n");
                         while (!int.TryParse(Console.ReadLine(), out matriculaPessoa))
                             Console.WriteLine("matricula inválida, digite novamente!\n");
