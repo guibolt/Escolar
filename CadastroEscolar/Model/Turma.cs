@@ -16,18 +16,18 @@ namespace CadastroTurma.Model
 
         public Turma() { }
 
-        public void CadastrarTurma(Escola escola)
+        public void CadastrarTurma(List<Coordenador> Coordenadores)
         {
             int idCoodenador, quantidade;
 
             Console.WriteLine("Coordenadores:\n");
-            escola.Coordenadores.ForEach(e => Console.WriteLine(e));
+            Coordenadores.ForEach(e => Console.WriteLine(e));
 
             Console.WriteLine("Digite a matricula do coodernador!\n");
             while (!int.TryParse(Console.ReadLine(), out idCoodenador))
                 Console.WriteLine("matricula inválida, digite novamente!\n");
 
-            var oCoodenador = escola.Coordenadores.FirstOrDefault(c => c.Matricula == idCoodenador);
+            var oCoodenador = Coordenadores.FirstOrDefault(c => c.Matricula == idCoodenador);
 
             while (oCoodenador == null)
             {
@@ -37,7 +37,7 @@ namespace CadastroTurma.Model
                 while (!int.TryParse(Console.ReadLine(), out idCoodenador))
                     Console.WriteLine("matricula inválida, digite novamente!\n");
 
-                oCoodenador = escola.Coordenadores.FirstOrDefault(c => c.Matricula == idCoodenador);
+                oCoodenador = Coordenadores.FirstOrDefault(c => c.Matricula == idCoodenador);
             }
 
             Console.WriteLine("Digite a quantiade maxima da turma!\n");
@@ -47,7 +47,6 @@ namespace CadastroTurma.Model
             Coordenador = oCoodenador;
             CapacidadeMax = quantidade;
 
-            Arquivo.Salvar(escola);
         }
 
         public override string ToString()

@@ -1,6 +1,5 @@
 ﻿using CadastroEscolar.Model;
 using CadastroTurma;
-using Core.Util;
 
 namespace CadastroEscolar
 {
@@ -8,9 +7,10 @@ namespace CadastroEscolar
     {
         static void Main(string[] args)
         {
-            var nossaEscola = Arquivo.Recuperar();
+            var nossaEscola = Operacoes.Recuperar();
             nossaEscola = nossaEscola ?? new Escola();
-            Operacoes.MenuCentral(nossaEscola);
+            nossaEscola.MenuCentral();
+            Operacoes.Salvar(nossaEscola);
         }
     }
 }

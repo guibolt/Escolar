@@ -12,7 +12,7 @@ namespace CadastroTurma.Model
         public int Matricula { get; set; } = new Random().Next(0000, 9999);
 
         //Método virtual base para a realização do cadastro.
-        public virtual void CadastrarPessoa(Escola escola)
+        public virtual void CadastrarPessoa()
         {
             int idadePessoa;
             char sexo;
@@ -21,7 +21,7 @@ namespace CadastroTurma.Model
             Console.WriteLine($"Digite o nome  ou digite 1 para voltar o menu principal! \n");
             Nome = Console.ReadLine();
 
-            Operacoes.VoltarAoMenu(Nome, escola);
+            //Operacoes.VoltarAoMenu(Nome, escola);
 
             while (!Operacoes.ChecaString(Nome) || Nome.Length < 3)
             {
@@ -48,5 +48,6 @@ namespace CadastroTurma.Model
             Cpf = cpf;
 
         }
+
     }
 }

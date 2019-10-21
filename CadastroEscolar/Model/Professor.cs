@@ -10,14 +10,14 @@ namespace CadastroTurma.Model
         public Professor() { }
         public override string ToString() => $"Nome: {Nome} Idade: {Idade} Sexo: {Sexo.ToString().ToUpper()} Matricula: {Matricula} Cpf: {Cpf} \n";
 
-        public override void CadastrarPessoa(Escola escola)
+        public override void CadastrarPessoa()
         {
-            base.CadastrarPessoa(escola);
+            base.CadastrarPessoa();
 
-            var numValida = Operacoes.ChecaId("professor", Matricula, escola);
+            //var numValida = Operacoes.ChecaId("professor", Matricula, escola);
 
-            if (numValida != 0)
-                Matricula = numValida;
+            //if (numValida != 0)
+            //    Matricula = numValida;
 
             Console.Clear();
             Console.WriteLine($"{Nome} Cadastrado com sucesso! Matricula n° {Matricula} \n");
