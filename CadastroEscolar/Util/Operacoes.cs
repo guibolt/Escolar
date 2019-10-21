@@ -16,7 +16,7 @@ namespace CadastroTurma
             switch (tipo.ToUpper())
             {
                 case "PROFESSOR":
-                    while (escola.Professores.Any(c => c.Matricula == Matricula))
+                    while (escola.Professores.Any(c => c.Matricula == Matricula) || escola.Turmas.Any(c => c.Professor.Matricula == Matricula)) 
                         return new Random().Next(0000, 9999);
                     break;
 
@@ -26,7 +26,7 @@ namespace CadastroTurma
                     break;
 
                 case "ALUNO":
-                    while (escola.Alunos.Any(c => c.Matricula == Matricula))
+                    while (escola.Alunos.Any(c => c.Matricula == Matricula) || escola.Turmas.Any(e => e.Alunos.Any(a => a.Matricula == Matricula )))
                         return new Random().Next(0000, 9999);
                     break;
 

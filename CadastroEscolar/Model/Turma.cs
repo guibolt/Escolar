@@ -1,5 +1,4 @@
 ﻿using CadastroEscolar.Model;
-using Core.Util;
 using System;
 using System.Collections.Generic;
 using System.Linq;

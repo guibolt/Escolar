@@ -726,23 +726,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\guibo\\.nuget\\packages\\": {},
+    "C:\\Users\\Treinamento 5\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\guibo\\Desktop\\Requesitos\\CadastroEscolar\\CadastroEscolar.csproj",
+      "projectUniqueName": "C:\\Users\\Treinamento 5\\Desktop\\Escola\\Escolar\\CadastroEscolar\\CadastroEscolar.csproj",
       "projectName": "CadastroEscolar",
-      "projectPath": "C:\\Users\\guibo\\Desktop\\Requesitos\\CadastroEscolar\\CadastroEscolar.csproj",
-      "packagesPath": "C:\\Users\\guibo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\guibo\\Desktop\\Requesitos\\CadastroEscolar\\obj\\",
+      "projectPath": "C:\\Users\\Treinamento 5\\Desktop\\Escola\\Escolar\\CadastroEscolar\\CadastroEscolar.csproj",
+      "packagesPath": "C:\\Users\\Treinamento 5\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Treinamento 5\\Desktop\\Escola\\Escolar\\CadastroEscolar\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\guibo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Treinamento 5\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
