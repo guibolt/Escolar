@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using CadastroEscolar.Model;
 using CadastroTurma.Model;
 using Core.Util;
@@ -274,7 +272,6 @@ namespace CadastroTurma
                     break;
 
                 case "2":
-
                     Console.WriteLine("Professores Disponiveis!");
                     escola.Professores.ForEach(e => Console.WriteLine(e));
 

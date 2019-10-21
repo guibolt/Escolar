@@ -18,27 +18,11 @@ namespace CadastroTurma.Model
 
         public void CadastrarTurma(Escola escola)
         {
-            int idCoodenador, quantidade;
-
+            int quantidade;
             Console.WriteLine("Coordenadores:\n");
             escola.Coordenadores.ForEach(e => Console.WriteLine(e));
 
-            Console.WriteLine("Digite a matricula do coodernador!\n");
-            while (!int.TryParse(Console.ReadLine(), out idCoodenador))
-                Console.WriteLine("matricula inválida, digite novamente!\n");
-
-            var oCoodenador = escola.Coordenadores.FirstOrDefault(c => c.Matricula == idCoodenador);
-
-            while (oCoodenador == null)
-            {
-                Console.WriteLine("Coordenador inválido, digite novamente!\n");
-
-                Console.WriteLine("Digite a matricula do coodernador!\n");
-                while (!int.TryParse(Console.ReadLine(), out idCoodenador))
-                    Console.WriteLine("matricula inválida, digite novamente!\n");
-
-                oCoodenador = escola.Coordenadores.FirstOrDefault(c => c.Matricula == idCoodenador);
-            }
+            var oCoodenador = Operacoes.RetornaCoordenador(escola);
 
             Console.WriteLine("Digite a quantiade maxima da turma!\n");
             while (!int.TryParse(Console.ReadLine(), out quantidade))

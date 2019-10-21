@@ -8,7 +8,6 @@ namespace CadastroTurma.Model
         public string Nome { get; set; }
         public int Idade { get; set; }
         public char Sexo { get; set; }
-        public long Cpf { get; set; }
         public int Matricula { get; set; } = new Random().Next(0000, 9999);
 
         //Método virtual base para a realização do cadastro.
@@ -17,7 +16,6 @@ namespace CadastroTurma.Model
            
             int idadePessoa;
             char sexo;
-            long cpf;
             Console.Clear();
 
             Console.WriteLine($"Digite o nome  ou digite 1 para voltar o menu principal! \n");
@@ -42,13 +40,6 @@ namespace CadastroTurma.Model
                 Console.WriteLine("Sexo inválido, realize o cadastro novamente!\n");
 
             Sexo = sexo;
-
-            Console.WriteLine($"Digite o CPF do {Nome}");
-            while (!long.TryParse(Console.ReadLine(), out cpf) || cpf.ToString().Length < 11 || cpf.ToString().Length > 11)
-                Console.WriteLine("Cpf inválido, realize o cadastro novamente!\n");
-
-            Cpf = cpf;
-
         }
     }
 }

@@ -10,7 +10,7 @@ namespace CadastroEscolar.Model
         public Coordenador() {}
         public List<int> CodTurmas { get; set; } = new List<int>();
 
-        public override string ToString() => $"Nome: {Nome} Idade: {Idade} Sexo: {Sexo.ToString().ToUpper()} Matricula: {Matricula} Cpf: {Cpf} \n";
+        public override string ToString() => $"Nome: {Nome} Idade: {Idade} Sexo: {Sexo.ToString().ToUpper()} Matricula: {Matricula}  \n";
         public override void CadastrarPessoa(Escola escola)
         {
             base.CadastrarPessoa(escola);

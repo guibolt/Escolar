@@ -8,7 +8,7 @@ namespace CadastroTurma.Model
         public Aluno() {  }
         public bool Bolsista { get; set; }
 
-        public override string ToString() => $"Nome: {Nome} Idade: {Idade} Sexo: {Sexo.ToString().ToUpper()} Ra: {Matricula} Cpf: {Cpf} É Bolsista: {Bolsista}\n";
+        public override string ToString() => $"Nome: {Nome} Idade: {Idade} Sexo: {Sexo.ToString().ToUpper()} Ra: {Matricula}  É Bolsista: {Bolsista}\n";
 
         public  override void  CadastrarPessoa(Escola escola)
         {
