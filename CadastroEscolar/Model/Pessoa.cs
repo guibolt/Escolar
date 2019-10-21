@@ -14,9 +14,11 @@ namespace CadastroTurma.Model
         //Método virtual base para a realização do cadastro.
         public virtual void CadastrarPessoa(Escola escola)
         {
+           
             int idadePessoa;
             char sexo;
             long cpf;
+            Console.Clear();
 
             Console.WriteLine($"Digite o nome  ou digite 1 para voltar o menu principal! \n");
             Nome = Console.ReadLine();
@@ -30,12 +32,11 @@ namespace CadastroTurma.Model
             }
 
             Console.WriteLine($"Digite a idade do {Nome}!\n");
-            while (!int.TryParse(Console.ReadLine(), out idadePessoa) || idadePessoa < 6)
+            while (!int.TryParse(Console.ReadLine(), out idadePessoa) || idadePessoa < 6 || idadePessoa > 60)
                 Console.WriteLine("Idade inválida, digite  novamente!\n");
-
+        
             Idade = idadePessoa;
-            
-
+      
             Console.WriteLine($"Digite o sexo do {Nome}");
             while (!char.TryParse(Console.ReadLine(), out sexo) || sexo.ToString().ToUpper() != "F" && sexo.ToString().ToUpper() != "M")
                 Console.WriteLine("Sexo inválido, realize o cadastro novamente!\n");

@@ -21,7 +21,7 @@ namespace CadastroTurma.Model
             
             Console.WriteLine("Digite se o aluno é bolsista, S para sim  ou  N para não?");
             string opcao = Console.ReadLine();
-            while (opcao.ToUpper() != "S" || opcao.ToUpper() != "N")
+            while (opcao.ToUpper() != "S" && opcao.ToUpper() != "N")
             {
                 Console.WriteLine("Opção inválida, digite novamente!");
                 opcao = Console.ReadLine();

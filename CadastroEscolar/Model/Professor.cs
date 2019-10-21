@@ -13,6 +13,12 @@ namespace CadastroTurma.Model
         public override void CadastrarPessoa(Escola escola)
         {
             base.CadastrarPessoa(escola);
+            if(Idade < 24)
+            {
+                Console.WriteLine("É necessario ter ao menos 24 anos para realizar o cadastro de um professor! \n Aperte enter para cadatrar novamente!");
+                Console.ReadLine();
+                CadastrarPessoa(escola);
+            }
 
             var numValida = Operacoes.ChecaId("professor", Matricula, escola);
 
