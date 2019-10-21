@@ -11,6 +11,7 @@ namespace CadastroEscolar
             var nossaEscola = Arquivo.Recuperar();
             nossaEscola = nossaEscola ?? new Escola();
             Operacoes.MenuCentral(nossaEscola);
+           
         }
     }
 }

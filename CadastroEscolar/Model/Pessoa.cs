@@ -34,6 +34,7 @@ namespace CadastroTurma.Model
                 Console.WriteLine("Idade inválida, digite  novamente!\n");
 
             Idade = idadePessoa;
+            
 
             Console.WriteLine($"Digite o sexo do {Nome}");
             while (!char.TryParse(Console.ReadLine(), out sexo) || sexo.ToString().ToUpper() != "F" && sexo.ToString().ToUpper() != "M")

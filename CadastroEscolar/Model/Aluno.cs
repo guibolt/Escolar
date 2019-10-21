@@ -19,19 +19,15 @@ namespace CadastroTurma.Model
             if(numValida != 0)
                 Matricula = numValida;
             
-
-            Console.WriteLine("Digite se o aluno é bolsista, sim ou não?");
+            Console.WriteLine("Digite se o aluno é bolsista, S para sim  ou  N para não?");
             string opcao = Console.ReadLine();
-            while (!Operacoes.ValidaOpcao(opcao))
+            while (opcao.ToUpper() != "S" || opcao.ToUpper() != "N")
             {
                 Console.WriteLine("Opção inválida, digite novamente!");
                 opcao = Console.ReadLine();
-
-                if (opcao == "SIM")
-                    Bolsista = true;
-                else
-                    Bolsista = false;
             }
+
+            Bolsista = opcao == "S";
 
             Console.Clear();
             Console.WriteLine($"{Nome} Cadastrado com sucesso! Matricula n° {Matricula} \n");

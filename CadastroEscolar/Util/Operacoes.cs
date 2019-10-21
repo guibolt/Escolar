@@ -16,7 +16,7 @@ namespace CadastroTurma
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("\nDigite 1 para menu  de cadastros, 2 para menu de exibiçao, 3 para atribuir aluno a turma \n  e 4 para atribuir professor, e 5 para atrubir coodenador!  e 6 para sair! \n");
+                Console.WriteLine("\nDigite 1 para menu de cadastros\n2 para menu de exibiçao\n3 para atribuir aluno a turma \n4 para atribuir professor \n5 para atrubir coodenador!\n6 para sair! \n");
                 string Decisao = Console.ReadLine();
 
                 switch (Decisao)
@@ -50,6 +50,7 @@ namespace CadastroTurma
                         Console.WriteLine("Opção inválida!\n");
                         break;
                 }
+                Arquivo.Salvar(escola);
             }
         }
 
@@ -58,7 +59,7 @@ namespace CadastroTurma
             Console.Clear();
             while (true)
             {
-                Console.WriteLine("\nDigite 1 para realizar o cadastro de um Aluno, 2 para professores, 3 para coordenador, 4 para turmas! e 5 para voltar o menu principal! \n");
+                Console.WriteLine("\nDigite 1 para realizar o cadastro de um Aluno,\n2 para professores \n3 para coordenador \n4 para turmas! \n5 para voltar o menu principal! \n");
                 string Decisao = Console.ReadLine();
 
                 switch (Decisao)
@@ -67,27 +68,23 @@ namespace CadastroTurma
                         var novoAluno = new Aluno();
                         novoAluno.CadastrarPessoa(Escola);
                         Escola.Alunos.Add(novoAluno);
-                        Arquivo.Salvar(Escola);
                         break;
 
                     case "2":
                         var novoProfessor = new Professor();
                         novoProfessor.CadastrarPessoa(Escola);
                         Escola.Professores.Add(novoProfessor);
-                        Arquivo.Salvar(Escola);
                         break;
 
                     case "3":
                         var novoCoordenador = new Coordenador();
                         novoCoordenador.CadastrarPessoa(Escola);
                         Escola.Coordenadores.Add(novoCoordenador);
-                        Arquivo.Salvar(Escola);
                         break;
                     case "4":
                         var novaTurma = new Turma();
                         novaTurma.CadastrarTurma(Escola);
                         Escola.Turmas.Add(novaTurma);
-                        Arquivo.Salvar(Escola);
                         break;
 
                     case "5":
@@ -108,7 +105,7 @@ namespace CadastroTurma
             while (true)
             {
                 Console.Clear();
-                Console.WriteLine("\nDigite 1 para  a exbição de Alunos, 2 para professores, 3 para coordenador \n, 4 para turmas! 5 para ver turma por Id e 6 para voltar o menu principal! \n");
+                Console.WriteLine("\nDigite 1 para  a exbição de Alunos \n2 para professores \n3 para coordenador \n4 para turmas! \n5 para ver turma por Id \n6 para voltar o menu principal! \n");
                 string Decisao = Console.ReadLine();
 
                 switch (Decisao)
@@ -225,7 +222,6 @@ namespace CadastroTurma
 
             aTurma.Alunos.Add(oAluno);
             escola.Alunos.Remove(oAluno);
-            Arquivo.Salvar(escola);
             Console.WriteLine("Aluno atribuido com sucesso, enter para voltar ao menu principal!");
             Console.ReadLine();
 
@@ -277,7 +273,6 @@ namespace CadastroTurma
             oProfessor.QuantidadeTurmas++;
             aTurma.Professor = oProfessor;
 
-            Arquivo.Salvar(escola);
         }
 
         public static void AtribuiCoodenador(Escola escola)
@@ -289,7 +284,7 @@ namespace CadastroTurma
 
             int matriculaCoordenador, codTurma;
 
-            Console.WriteLine("Digite 1 para atribuir coodernador na turma e 2 para atribuir a um professor");
+            Console.WriteLine("Digite 1 para atribuir coodernador na turma e \n2 para atribuir a um professor");
             string Decisao = Console.ReadLine();
 
             switch (Decisao)
@@ -323,8 +318,6 @@ namespace CadastroTurma
 
                     oCoordenador.CodTurmas.Add(aTurma.CodigoTurma);
                     aTurma.Coordenador = oCoordenador;
-
-                    Arquivo.Salvar(escola);
                     break;
 
                 case "2":
@@ -364,8 +357,6 @@ namespace CadastroTurma
 
 
                     oProfessor.Coordenador = Coordenador;
-
-                    Arquivo.Salvar(escola);
                     break;
 
                 default:
@@ -435,7 +426,7 @@ namespace CadastroTurma
                 aTurma = escola.Turmas.FirstOrDefault(c => c.CodigoTurma == codTurma);
             }
 
-            Console.WriteLine("Digite 1 para remover aluno da turma e 2 para remover professor e 3 para remover Coordenador");
+            Console.WriteLine("Digite 1 para remover aluno da turma e \n2 para remover professor e \n3 para remover Coordenador");
             string Decisao = Console.ReadLine();
 
             switch (Decisao)
@@ -453,7 +444,7 @@ namespace CadastroTurma
                     }
 
                     aTurma.Alunos.Remove(oAluno);
-                    Arquivo.Salvar(escola);
+                    escola.Alunos.Add(oAluno);
                     break;
 
                 case "2":
@@ -469,8 +460,13 @@ namespace CadastroTurma
                         oProfessor = escola.Professores.FirstOrDefault(c => c.Matricula == matriculaPessoa);
                     }
 
+                    if (oProfessor.QuantidadeTurmas == 2)
+                    {
+                        oProfessor.QuantidadeTurmas--;
+                        escola.Professores.Add(aTurma.Professor);
+                    }
+
                     aTurma.Professor = null;
-                    Arquivo.Salvar(escola);
                     break;
 
                 case "3":
@@ -485,7 +481,6 @@ namespace CadastroTurma
                         Coordenador = escola.Coordenadores.FirstOrDefault(c => c.Matricula == matriculaPessoa);
                     }
                     aTurma.Coordenador = null;
-                    Arquivo.Salvar(escola);
                     break;
 
                 default:
@@ -506,22 +501,13 @@ namespace CadastroTurma
             return true;
         }
 
-
-        public static bool ValidaOpcao(string opcao)
-        {
-            if (opcao.ToUpper() == "SIM" || opcao.ToUpper() == "NÃO" || opcao.ToUpper() == "NAO")
-                return true;
-
-            return false;
-        }
-
         //Método para prevenir a repetição do random
         public static int ChecaId(string tipo, int Matricula, Escola escola)
         {
             switch (tipo.ToUpper())
             {
                 case "PROFESSOR":
-                    while (escola.Professores.Any(c => c.Matricula == Matricula))
+                    while (escola.Professores.Any(c => c.Matricula == Matricula) || escola.Turmas.Any(c => c.Professor.Matricula == Matricula))
                         return new Random().Next(0000, 9999);
                     break;
 
@@ -531,7 +517,7 @@ namespace CadastroTurma
                     break;
 
                 case "ALUNO":
-                    while (escola.Alunos.Any(c => c.Matricula == Matricula))
+                    while (escola.Alunos.Any(c => c.Matricula == Matricula) || escola.Turmas.Any(e => e.Alunos.Any(a => a.Matricula == Matricula)))
                         return new Random().Next(0000, 9999);
                     break;
 
