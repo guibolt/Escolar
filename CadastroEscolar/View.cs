@@ -250,9 +250,15 @@ namespace CadastroEscolar
             // Relização das validaçoes com while para prender o usuario ate ele escrever corretamente 
             var oAluno = Operacoes.RetornaAluno(escola);
 
+            if (escola.Turmas.Count() == 0)
+            {
+                Console.WriteLine("Não há turmas disponiveis!\n Enter para voltar ao menu principal");
+                Console.ReadLine();
+                MenuCentral(escola);
+            }
+
             Console.WriteLine("Turmas disponiveis\n");
             escola.Turmas.ForEach(e => Console.WriteLine(e));
-
 
             var aTurma = Operacoes.RetornaTurma(escola);
 
@@ -280,7 +286,7 @@ namespace CadastroEscolar
             {
                 Console.WriteLine("Não há professores disponiveis, aperte enter para voltar ao menu central.");
                 Console.ReadLine();
-                View.MenuCentral(escola);
+                MenuCentral(escola);
             }
 
             Console.Clear();
@@ -294,6 +300,13 @@ namespace CadastroEscolar
             if (oProfessor.QuantidadeTurmas == 2)
             {
                 Console.WriteLine("Este professor ja está em duas turmas, não é possivel inscreve-lo em uma terceira!");
+                Console.ReadLine();
+                MenuCentral(escola);
+            }
+
+            if (escola.Turmas.Count() == 0)
+            {
+                Console.WriteLine("Não há turmas disponiveis!\n Enter para voltar ao menu principal");
                 Console.ReadLine();
                 MenuCentral(escola);
             }
