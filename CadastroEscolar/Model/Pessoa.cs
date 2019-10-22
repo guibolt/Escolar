@@ -1,7 +1,7 @@
-﻿using CadastroEscolar.Model;
-using System;
+﻿using System;
+using System.Text.RegularExpressions;
 
-namespace CadastroTurma.Model
+namespace CadastroEscolar.Model
 {
     public abstract class Pessoa
     {
@@ -13,31 +13,27 @@ namespace CadastroTurma.Model
         //Método virtual base para a realização do cadastro.
         public virtual void CadastrarPessoa(Escola escola)
         {
-           
-            int idadePessoa;
+            Operacoes.MudarBack();
             char sexo;
-            Console.Clear();
+ 
+            Console.WriteLine("Pressione enter para o proximo item do cadastro ou esc para sair\n");
+            Operacoes.VoltarMenu(Console.ReadKey(), escola);
 
-            Console.WriteLine($"Digite o nome  ou digite 1 para voltar o menu principal! \n");
+            Console.WriteLine($"Digite o nome \n");
             Nome = Console.ReadLine();
 
-            Operacoes.VoltarAoMenu(Nome, escola);
-
-            while (!Operacoes.ChecaString(Nome) || Nome.Length < 3)
+            while (!Regex.IsMatch(Nome.ToLower(), "^[a-z áéíóúàèìòùâêîôûãõç]+$") || Nome.Length < 3)
             {
-                Console.WriteLine("Nome inválido, digite o nome novamente!\n");
+                Console.WriteLine("Nome deve conter somenente letras e ter no minimo 3 de tamanho !\n");
                 Nome = Console.ReadLine();
             }
 
-            Console.WriteLine($"Digite a idade do {Nome}!\n");
-            while (!int.TryParse(Console.ReadLine(), out idadePessoa) || idadePessoa < 6 || idadePessoa > 60)
-                Console.WriteLine("Idade inválida, digite  novamente!\n");
-        
-            Idade = idadePessoa;
-      
+            Console.WriteLine("Pressione enter para o proximo item do cadastro ou esc  para sair\n");
+            Operacoes.VoltarMenu(Console.ReadKey(), escola);
+
             Console.WriteLine($"Digite o sexo do {Nome}");
             while (!char.TryParse(Console.ReadLine(), out sexo) || sexo.ToString().ToUpper() != "F" && sexo.ToString().ToUpper() != "M")
-                Console.WriteLine("Sexo inválido, realize o cadastro novamente!\n");
+                Console.WriteLine("Sexo inválido, digite f ou m!\n");
 
             Sexo = sexo;
         }

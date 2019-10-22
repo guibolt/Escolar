@@ -1,5 +1,7 @@
-﻿using CadastroEscolar.Model;
+﻿using CadastroEscolar;
+using CadastroEscolar.Model;
 using System;
+using System.Linq;
 
 namespace CadastroTurma.Model
 {
@@ -12,21 +14,38 @@ namespace CadastroTurma.Model
 
         public override void CadastrarPessoa(Escola escola)
         {
+            Operacoes.MudarBack();
             base.CadastrarPessoa(escola);
-            if(Idade < 24)
-            {
-                Console.WriteLine("É necessario ter ao menos 24 anos para realizar o cadastro de um professor! \n Aperte enter para cadatrar novamente!");
-                Console.ReadLine();
-                CadastrarPessoa(escola);
-            }
+            int idadePessoa;
 
+            Operacoes.MudarBack();
+
+            Console.WriteLine($"Digite a idade do {Nome}!\n");
+            while (!int.TryParse(Console.ReadLine(), out idadePessoa) || idadePessoa < 24 || idadePessoa > 60)
+                Console.WriteLine("Idade inválida, a idade deve estar entre 24 e 60 anos!\n");
+
+            Idade = idadePessoa;
             var numValida = Operacoes.ChecaId("professor", Matricula, escola);
 
             if (numValida != 0)
                 Matricula = numValida;
 
+            if (escola.Coordenadores.Count() == 0)
+            {
+                Console.WriteLine("Não há coordenadores disponiveis, cadastre um! \n pressione enter para voltar ao menu!");
+                Console.ReadLine();
+                View.MenuCentral(escola);
+            }
+            Console.WriteLine("Coordenadores disponiveis!");
+            escola.Coordenadores.ForEach(c => Console.WriteLine(c));
+
+            var Ocoordenador = Operacoes.RetornaCoordenador(escola);
+
+            Coordenador = Ocoordenador;
+
             Console.Clear();
-            Console.WriteLine($"{Nome} Cadastrado com sucesso! Matricula n° {Matricula} \n");
+            Console.WriteLine($"{Nome} Cadastrado com sucesso! Matricula n° {Matricula} \n Enter para voltar ao menu");
+            Console.ReadLine();
         }
             
     }
