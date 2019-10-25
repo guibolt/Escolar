@@ -1,0 +1,13 @@
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\bin\Release\netcoreapp2.2\win10-x64\hostpolicy.dll
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\bin\Release\netcoreapp2.2\win10-x64\hostfxr.dll
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\bin\Release\netcoreapp2.2\win10-x64\CadastroEscolar.exe
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\bin\Release\netcoreapp2.2\win10-x64\CadastroEscolar.deps.json
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\bin\Release\netcoreapp2.2\win10-x64\CadastroEscolar.runtimeconfig.json
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\bin\Release\netcoreapp2.2\win10-x64\CadastroEscolar.runtimeconfig.dev.json
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\bin\Release\netcoreapp2.2\win10-x64\CadastroEscolar.dll
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\bin\Release\netcoreapp2.2\win10-x64\CadastroEscolar.pdb
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\obj\Release\netcoreapp2.2\win10-x64\CadastroEscolar.csprojAssemblyReference.cache
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\obj\Release\netcoreapp2.2\win10-x64\CadastroEscolar.AssemblyInfoInputs.cache
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\obj\Release\netcoreapp2.2\win10-x64\CadastroEscolar.AssemblyInfo.cs
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\obj\Release\netcoreapp2.2\win10-x64\CadastroEscolar.dll
+C:\Users\Treinamento 5\Desktop\Escola\Escolar\CadastroEscolar\obj\Release\netcoreapp2.2\win10-x64\CadastroEscolar.pdb

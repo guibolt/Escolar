@@ -13,6 +13,7 @@ namespace CadastroEscolar.Model
         public override string ToString() => $"Nome: {Nome} Idade: {Idade} Sexo: {Sexo.ToString().ToUpper()} Matricula: {Matricula}  \n";
         public override void CadastrarPessoa(Escola escola)
         {
+            base.CadastrarPessoa(escola);
             int idadePessoa;
 
             Operacoes.MudarBack();
@@ -22,14 +23,6 @@ namespace CadastroEscolar.Model
                 Console.WriteLine("Idade inválida, a idade deve estar entre 24 e 60 anos!\n");
 
             Idade = idadePessoa;
-
-            base.CadastrarPessoa(escola);
-            if (Idade <27)
-            {
-                Console.WriteLine("é necessario ter ao menos 28 anos para cadastrar um coodernador! \n Aperte enter para voltar ao menu de cadastros");
-                Console.ReadLine();
-                View.MenuDeCadastro(escola);
-            }
 
             var numValida = Operacoes.ChecaId("coordenador", Matricula, escola);
 

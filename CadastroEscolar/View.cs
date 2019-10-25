@@ -126,12 +126,7 @@ namespace CadastroEscolar
                     case "1":
 
                         Console.Clear();
-                        if (escola.Alunos.Count() == 0)
-                        {
-                            Console.WriteLine("Não há professores disponiveis!\n Enter para voltar ao menu principal");
-                            Console.ReadLine();
-                            MenuCentral(escola);
-                        }
+                        Operacoes.TestaAlunos(escola);
                         Console.WriteLine("Alunos Disponiveis!:\n");
                         escola.Alunos.ForEach(e => Console.WriteLine(e));
                         Console.WriteLine("Enter para voltar ao menu de exibição");
@@ -140,12 +135,7 @@ namespace CadastroEscolar
 
                     case "2":
                         Console.Clear();
-                        if (escola.Professores.Count() == 0)
-                        {
-                            Console.WriteLine("Não há professores disponiveis!\n Enter para voltar ao menu principal");
-                            Console.ReadLine();
-                            MenuCentral(escola);
-                        }
+                        Operacoes.TestaProfessores(escola);
                         Console.WriteLine("Professores Disponiveis:\n");
                         foreach (var professor in escola.Professores)
                         {
@@ -158,12 +148,7 @@ namespace CadastroEscolar
 
                     case "3":
                         Console.Clear();
-                        if (escola.Coordenadores.Count() == 0)
-                        {
-                            Console.WriteLine("Não há coordenadores disponiveis!\n Enter para voltar ao menu principal");
-                            Console.ReadLine();
-                            MenuCentral(escola);
-                        }
+                        Operacoes.TestaCoodenadores(escola);
                         Console.WriteLine("Coordenadores:\n");
                         escola.Coordenadores.ForEach(e => Console.WriteLine(e));
                         Console.WriteLine("Enter para voltar ao menu de exibição");
@@ -171,13 +156,7 @@ namespace CadastroEscolar
                         break;
                     case "4":
                         Console.Clear();
-                        if (escola.Turmas.Count() == 0)
-                        {
-
-                            Console.WriteLine("Não há turmas disponiveis!\n Enter para voltar ao menu principal");
-                            Console.ReadLine();
-                            MenuCentral(escola);
-                        }
+                        Operacoes.TestaTurmas(escola);
                         Console.WriteLine("Turmas:\n");
                         escola.Turmas.ForEach(e => Console.WriteLine(e));
                         Console.WriteLine("Enter para voltar ao menu de exibição");
@@ -186,12 +165,7 @@ namespace CadastroEscolar
 
                     case "5":
                         Console.Clear();
-                        if (escola.Turmas.Count() == 0)
-                        {
-                            Console.WriteLine("Não há turmas disponiveis!\n Enter para voltar ao menu principal");
-                            Console.ReadLine();
-                            MenuCentral(escola);
-                        }
+                        Operacoes.TestaTurmas(escola);
                         Console.WriteLine("Turmas disponiveis");
                         escola.Turmas.ForEach(c => Console.WriteLine(c));
                         var aTurma = Operacoes.RetornaTurma(escola);
@@ -203,12 +177,7 @@ namespace CadastroEscolar
                         break;
                     case "6":
                         Console.Clear();
-                        if (escola.Coordenadores.Count() == 0)
-                        {
-                            Console.WriteLine("Não há coodenadores disponiveis!\n Enter para voltar ao menu principal");
-                            Console.ReadLine();
-                            MenuCentral(escola);
-                        }
+                        Operacoes.TestaCoodenadores(escola);
                         Console.WriteLine("Coodenadores disponiveis");
                         escola.Coordenadores.ForEach(c => Console.WriteLine(c));
                         var oCoodenador = Operacoes.RetornaCoordenador(escola);
@@ -231,17 +200,12 @@ namespace CadastroEscolar
             }
         }
 
-
+       
         public static void AtribuiAlunoaTurma(Escola escola)
         {
             Operacoes.MudarBack();
- 
-            if (escola.Alunos.Count() == 0)
-            {
-                Console.WriteLine("Não há alunos disponiveis, aperte enter para voltar ao menu central.");
-                Console.ReadLine();
-                View.MenuCentral(escola);
-            }
+
+            Operacoes.TestaAlunos(escola);
 
             Console.Clear();
             Console.WriteLine("Alunos Disponiveis!:\n");
@@ -250,12 +214,7 @@ namespace CadastroEscolar
             // Relização das validaçoes com while para prender o usuario ate ele escrever corretamente 
             var oAluno = Operacoes.RetornaAluno(escola);
 
-            if (escola.Turmas.Count() == 0)
-            {
-                Console.WriteLine("Não há turmas disponiveis!\n Enter para voltar ao menu principal");
-                Console.ReadLine();
-                MenuCentral(escola);
-            }
+            Operacoes.TestaTurmas(escola);
 
             Console.WriteLine("Turmas disponiveis\n");
             escola.Turmas.ForEach(e => Console.WriteLine(e));
@@ -282,12 +241,7 @@ namespace CadastroEscolar
         {
             Operacoes.MudarBack();
 
-            if (escola.Professores.Count() == 0)
-            {
-                Console.WriteLine("Não há professores disponiveis, aperte enter para voltar ao menu central.");
-                Console.ReadLine();
-                MenuCentral(escola);
-            }
+            Operacoes.TestaProfessores(escola);
 
             Console.Clear();
             // Relização das validaçoes com while para prender o usuario ate ele escrever corretamente 
@@ -304,12 +258,7 @@ namespace CadastroEscolar
                 MenuCentral(escola);
             }
 
-            if (escola.Turmas.Count() == 0)
-            {
-                Console.WriteLine("Não há turmas disponiveis!\n Enter para voltar ao menu principal");
-                Console.ReadLine();
-                MenuCentral(escola);
-            }
+            Operacoes.TestaTurmas(escola);
 
             Console.WriteLine("Turmas Disponiveis!\n");
             escola.Turmas.ForEach(c => Console.WriteLine(c));
@@ -346,12 +295,7 @@ namespace CadastroEscolar
         {
             Operacoes.MudarBack();
 
-            if (escola.Coordenadores.Count() == 0)
-            {
-                Console.WriteLine("Não há professores disponiveis, aperte enter para voltar ao menu central.");
-                Console.ReadLine();
-                MenuCentral(escola);
-            }
+            Operacoes.TestaCoodenadores(escola);
 
             Console.Clear();
 
@@ -364,16 +308,10 @@ namespace CadastroEscolar
             switch (Decisao)
             {
                 case "1":
-                    if (escola.Turmas.Count() == 0)
-                    {
-                        Console.WriteLine("Não há turmas disponiveis, aperte enter para voltar ao menu central.");
-                        Console.ReadLine();
-                        MenuCentral(escola);
-                    }
+                    Operacoes.TestaTurmas(escola);
                     Console.WriteLine("Turmas disponiveis");
                     escola.Turmas.ForEach(c => Console.WriteLine(c));
-                  
-
+                 
                     // Relização das validaçoes com while para prender o usuario ate ele escrever corretamente 
 
                     var oCoordenador = Operacoes.RetornaCoordenador(escola);
@@ -386,12 +324,7 @@ namespace CadastroEscolar
                     break;
 
                 case "2":
-                    if (escola.Professores.Count() == 0)
-                    {
-                        Console.WriteLine("Não há professores disponiveis, aperte enter para voltar ao menu central.");
-                        Console.ReadLine();
-                        View.MenuCentral(escola);
-                    }
+                    Operacoes.TestaProfessores(escola);
                     Console.WriteLine("Professores Disponiveis!");
                     escola.Professores.ForEach(e => Console.WriteLine(e));
 
@@ -411,13 +344,7 @@ namespace CadastroEscolar
 
         public static void RemovePessoasTurma(Escola escola)
         {
-            if (escola.Turmas.Count() == 0)
-            {
-                Console.WriteLine("Não há turmas disponiveis, aperte enter para voltar ao menu central.");
-                Console.ReadLine();
-                MenuCentral(escola);
-            }
-
+            Operacoes.TestaTurmas(escola);  
             Console.Clear();
             Console.WriteLine("Turmas cadastradas!");
             escola.Turmas.ForEach(e => Console.WriteLine(e));

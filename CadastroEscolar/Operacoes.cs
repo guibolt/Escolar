@@ -73,7 +73,7 @@ namespace CadastroEscolar
         //Método para validar e retornar uma turma válida
         public static Turma RetornaTurma(Escola escola)
         {
-            Turma turma = null;
+            Turma turma =  null;
             int codTurma;
 
             while (turma == null)
@@ -93,12 +93,12 @@ namespace CadastroEscolar
             switch (tipo)
             {
                 case "professor":
-                    while (escola.Professores.Any(c => c.Matricula == Matricula))
+                    while (escola.Professores.Any(c => c.Matricula == Matricula) || escola.Turmas.Any(c => c.Professor.Matricula == Matricula))
                         return new Random().Next(0000, 9999);
                     break;
 
                 case "coordenador":
-                    while (escola.Coordenadores.Any(c => c.Matricula == Matricula))
+                    while (escola.Coordenadores.Any(c => c.Matricula == Matricula) )
                         return new Random().Next(0000, 9999);
                     break;
 
@@ -118,16 +118,52 @@ namespace CadastroEscolar
             return 0;
         }
 
+
+        public static void TestaAlunos(Escola escola)
+        {
+            if (escola.Alunos.Count() == 0)
+            {
+                Console.WriteLine("Não há professores disponiveis!\n Enter para voltar ao menu principal");
+                Console.ReadLine();
+                View.MenuCentral(escola);
+            }
+        }
+
+        public static void TestaProfessores(Escola escola)
+        {
+            if (escola.Professores.Count() == 0)
+            {
+                Console.WriteLine("Não há professores disponiveis!\n Enter para voltar ao menu principal");
+                Console.ReadLine();
+                View.MenuCentral(escola);
+            }
+        }
+
+        public static void TestaCoodenadores(Escola escola)
+        {
+            if (escola.Coordenadores.Count() == 0)
+            {
+                Console.WriteLine("Não há coordenadores disponiveis!\n Enter para voltar ao menu principal");
+                Console.ReadLine();
+                View.MenuCentral(escola);
+            }
+        }
+
+        public static void TestaTurmas(Escola escola)
+        {
+            if (escola.Turmas.Count() == 0)
+            {
+                Console.WriteLine("Não há turmas disponiveis!\n Enter para voltar ao menu principal");
+                Console.ReadLine();
+                View.MenuCentral(escola);
+            }
+        }
+
         public static void MudarBack()
         {
             Console.Title = "CADASTRO ESCOLAR!!";
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Clear();
         }
-        public static  void WriteLineCenter(string a)
-        {
-            Console.WriteLine(String.Format("{0," + ((Console.WindowWidth / 2) + (a.Length / 2)) + "}", a));
-        }
-      
     }
 }
